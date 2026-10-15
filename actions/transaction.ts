@@ -1,6 +1,6 @@
 'use server';
 
-import prisma from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
 
 // Fungsi untuk Mengambil Riwayat Transaksi
@@ -35,7 +35,8 @@ export async function addTransaction(formData: FormData) {
     throw new Error('Pilih dompet/aset terlebih dahulu');
   }
 
-  await prisma.$transaction(async (tx) => {
+  // Bungkus transaksi dengan benar menggunakan async (tx: any) => { ... }
+  await prisma.$transaction(async (tx: any) => {
     // 1. Catat Transaksi (Pemasukan masuk ke toAssetId, Pengeluaran keluar dari fromAssetId)
     await tx.transaction.create({
       data: {

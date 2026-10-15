@@ -78,10 +78,10 @@ export default function HomePage() {
 
         {/* KARTU RINGKASAN SALDO */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl dark:bg-slate-900 border border-slate-800 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold relative z-10">Total Saldo</p>
-            <h2 className="text-3xl font-black mt-2 relative z-10 break-words">
+          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl dark:bg-white dark:text-slate-900 border border-slate-800 dark:border-slate-200 relative overflow-hidden transition-colors">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 dark:bg-slate-900/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+            <p className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider font-semibold relative z-10">Total Saldo</p>
+            <h2 className="text-3xl font-black mt-2 relative z-10 break-words text-white dark:text-slate-900">
               Rp {totalBalance.toLocaleString('id-ID')}
             </h2>
           </div>
