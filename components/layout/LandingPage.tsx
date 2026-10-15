@@ -17,7 +17,6 @@ export default function LandingPage() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Cek preferensi awal / sinkronisasi dengan class html
     const root = document.documentElement;
     if (root.classList.contains('dark')) {
       setIsDark(true);
@@ -40,23 +39,23 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950 transition-colors duration-300">
       
-      {/* NAVBAR LANDING (Diselaraskan ke kiri secara profesional dengan padding optimal) */}
+      {/* NAVBAR LANDING (Dibuat lebih responsif & compact di HP) */}
       <header className="w-full border-b border-slate-200 dark:border-slate-800/80 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 sticky top-0 z-40">
-        <div className="w-full px-6 sm:px-10 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-emerald-500/20">
+        <div className="w-full px-3 sm:px-10 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-emerald-500 flex items-center justify-center text-slate-950 font-black text-lg sm:text-xl shadow-lg shadow-emerald-500/20 flex-shrink-0">
               F
             </div>
-            <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
+            <span className="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 dark:text-white truncate">
               Finance<span className="text-emerald-500">App</span>
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             {/* Tombol Toggle Tema (Gelap/Terang) */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-all cursor-pointer flex items-center justify-center"
+              className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-all cursor-pointer flex items-center justify-center"
               title="Ganti Tema"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
@@ -64,57 +63,57 @@ export default function LandingPage() {
 
             <button
               onClick={() => { setAuthModalMode('login'); setStatusMsg(null); }}
-              className="px-5 py-2.5 rounded-2xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
+              className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
             >
               Masuk
             </button>
             <button
               onClick={() => { setAuthModalMode('register'); setStatusMsg(null); }}
-              className="px-5 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs shadow-lg shadow-emerald-500/20 transition-all cursor-pointer flex items-center gap-2"
+              className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-[11px] sm:text-xs shadow-lg shadow-emerald-500/20 transition-all cursor-pointer flex items-center gap-1 sm:gap-2 whitespace-nowrap"
             >
-              Daftar Gratis <ArrowRight className="w-4 h-4" />
+              Daftar <span className="hidden sm:inline">Gratis</span> <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
         </div>
       </header>
 
       {/* HERO SECTION */}
-      <main className="flex-1 flex items-center justify-center px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16">
+        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
           
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-wide animate-pulse">
-            <ShieldCheck className="w-4 h-4" /> Platform Manajemen Keuangan Profesional &amp; Aman
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[11px] sm:text-xs font-bold tracking-wide animate-pulse">
+            <ShieldCheck className="w-4 h-4 flex-shrink-0" /> Platform Manajemen Keuangan Profesional &amp; Aman
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
             Kendalikan Keuanganmu, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400 dark:from-emerald-400 dark:to-teal-200">
               Raih Kebebasan Finansial.
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">
+          <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium px-2">
             Catat pemasukan, atur pengeluaran multi-dompet, transfer antar rekening secara instan, dan pantau arus kas harian dalam satu platform modern berstandar perbankan.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 w-full">
             <button
               onClick={() => { setAuthModalMode('register'); setStatusMsg(null); }}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-sm shadow-xl shadow-emerald-500/20 transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-sm shadow-xl shadow-emerald-500/20 transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               Mulai Kelola Keuangan <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={() => { setAuthModalMode('login'); setStatusMsg(null); }}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-bold text-sm transition-all cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-bold text-sm transition-all cursor-pointer"
             >
               Sudah punya akun? Masuk
             </button>
           </div>
 
           {/* FITUR UNGGULAN GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16 text-left">
-            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 pt-12 sm:pt-16 text-left">
+            <div className="p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3 shadow-sm">
               <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <Wallet className="w-5 h-5" />
               </div>
@@ -122,7 +121,7 @@ export default function LandingPage() {
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Kelola rekening bank, e-wallet, dan tunai secara terpisah dengan fitur transfer antar dompet otomatis.</p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3 shadow-sm">
+            <div className="p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3 shadow-sm">
               <div className="w-10 h-10 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center">
                 <PieChart className="w-5 h-5" />
               </div>
@@ -130,7 +129,7 @@ export default function LandingPage() {
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pantau ringkasan pemasukan dan pengeluaran secara real-time dengan filter kategori dan periode waktu.</p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3 shadow-sm">
+            <div className="p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 space-y-3 shadow-sm">
               <div className="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                 <Lock className="w-5 h-5" />
               </div>
@@ -143,7 +142,7 @@ export default function LandingPage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="py-8 border-t border-slate-200 dark:border-slate-900 text-center text-xs text-slate-500">
+      <footer className="py-6 sm:py-8 border-t border-slate-200 dark:border-slate-900 text-center text-xs text-slate-500 px-4">
         <p>© 2026 FinanceApp. All rights reserved. Platform Keuangan Profesional.</p>
       </footer>
 
