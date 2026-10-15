@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Pengaturan database (cocok untuk setup lokal menggunakan Laragon dan HeidiSQL)
+datasource db {
+  provider = "mysql" 
+  url      = env("DATABASE_URL")
+}
+
+// --- Daftar Tipe & Model Database ---
+
+enum AssetType {
+  BANK
+  EWALLET
+  CASH
+  INVESTMENT
+}
+
+model Asset {
+  id               String        @id @default(cuid())
+  name             String
+  assetType        AssetType
+  currentBalance   Float
+  transactionsFrom Transaction[] @relation("FromAsset")
+  transactionsTo   Transaction[] @relation("ToAsset")
+}
+
+model Liability {
+  id                 String @id @default(cuid())
+  remainingPrincipal Float
+}
+
+model Transaction {
+  id              String   @id @default(cuid())
+  amount          Float
+  category        String
+  description     String?
+  type            String   // 'INCOME' atau 'EXPENSE'
+  transactionDate DateTime @default(now())
+  fromAssetId     String?
+  toAssetId       String?
+  
+  fromAsset       Asset?   @relation("FromAsset", fields: [fromAssetId], references: [id])
+  toAsset         Asset?   @relation("ToAsset", fields: [toAssetId], references: [id])
+}
